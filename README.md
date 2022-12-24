@@ -1,0 +1,2 @@
+# wNFT-SnarkValid
+Snarkvalidation

@@ -1,0 +1,28 @@
+import snarkjs from 'snarkjs'
+
+// Define the NFT data and ZK proof
+const nftData = {
+  id: '12345',
+  owner: 'Alice'
+}
+const zkProof = {
+  a: [1, 2, 3, 4],
+  b: [5, 6, 7, 8],
+  c: [9, 10, 11, 12]
+}
+
+// Define the verification function
+async function verifyNFT() {
+  // Create the verification key and proof
+  const {verification_key, proof} = zkProof
+  // Verify the proof using snarkjs
+  const isValid = await snarkjs.groth.isValid(verification_key, proof, [nftData.id, nftData.owner])
+  if (isValid) {
+    console.log('NFT is valid!')
+  } else {
+    console.log('NFT is invalid.')
+  }
+}
+
+// Run the verification function
+verifyNFT()
